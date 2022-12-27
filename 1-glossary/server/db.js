@@ -10,6 +10,11 @@ mongoose.connect('mongodb+srv://Ghasb001:DEADspace!1991@glossarycluster.jhaclwx.
   console.log('Error', err)
 })
 
+let repoSchema = mongoose.Schema({
+  word: String,
+  definition: String,
+});
+
 // 1. Use mongoose to establish a connection to MongoDB
 // 2. Set up any schema and models needed by the app
 // 3. Export the models
