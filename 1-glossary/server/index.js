@@ -2,12 +2,19 @@ require("dotenv").config();
 const express = require('express');
 const app = express();
 const path = require('path');
+const Promise = require('promise');
 
 app.use(express.static('client/dist'));
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.sendStatus(200);
+app.get('/words', (req, res) => {
+  console.log('here')
+  res.send('ok')
+  res.end();
+})
+
+app.post('/words', (req, res) => {
+  console.log('here')
   res.end();
 })
 

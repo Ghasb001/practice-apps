@@ -8,20 +8,22 @@ use('Glossary');
 
 // The drop() command destroys all data from a collection.
 // Make sure you run it against the correct database and collection.
-// db.sales.drop();
+//db.sales.drop();
 
 // Insert a few documents into the sales collection.
-db.words.insertMany([
-  { '_id': 1, 'word': 'aardvark', 'definition': 'animal thing'},
-  { '_id': 2, 'word': 'frustration', 'definition': 'me'},
-  { '_id': 3, 'word': 'gullible', 'definition': 'not an actual word'},
-  { '_id': 4, 'word': 'zebra', 'definition': 'striped animal thing'},
+db.Words.insertMany([
+  { '_id': 1, 'Word': 'Aardvark', 'definition': 'some animal thing', },
+  { '_id': 2, 'Word': 'Frustrated', 'definition': 'me', },
+  { '_id': 3, 'Word': 'Gullible', 'definition': 'Not an actual word (look it up)', },
+  { '_id': 4, 'Word': 'Zebra', 'definition': 'striped animal thing', },
 ]);
 
-// Run a find command to view items sold on April 4th, 2014.
-//db.words.find({ date: { $gte: new Date('2014-04-04'), $lt: new Date('2014-04-05') } });
+//mongodb+srv://Ghasb001:HACKReactorRPP2209!@cluster0.jkoecfm.mongodb.net/test
 
-// Build an aggregation to view total sales for each product in 2014.
+// Run a find command to view items sold on April 4th, 2014.
+// db.sales.find({ date: { $gte: new Date('2014-04-04'), $lt: new Date('2014-04-05') } });
+
+// // Build an aggregation to view total sales for each product in 2014.
 // const aggregation = [
 //   { $match: { date: { $gte: new Date('2014-01-01'), $lt: new Date('2015-01-01') } } },
 //   { $group: { _id: '$item', totalSaleAmount: { $sum: { $multiply: [ '$price', '$quantity' ] } } } }
