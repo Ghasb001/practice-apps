@@ -1,4 +1,5 @@
 import React, { Component} from "react";
+import Word from "./word.jsx";
 
 const WordList = (props) => (
   <div >
