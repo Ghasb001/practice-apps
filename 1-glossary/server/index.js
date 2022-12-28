@@ -3,12 +3,13 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const Promise = require('promise');
+const db = require('./db.js');
 
 app.use(express.static('client/dist'));
 app.use(express.json());
 
 app.get('/words', (req, res) => {
-  console.log('here')
+  db.retrieve();
   res.send('ok')
   res.end();
 })

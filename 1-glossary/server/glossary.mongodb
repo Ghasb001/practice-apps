@@ -4,18 +4,18 @@
 // Use Ctrl+Space inside a snippet or a string literal to trigger completions.
 
 // Select the database to use.
-use('Glossary');
+use('glossary');
 
 // The drop() command destroys all data from a collection.
 // Make sure you run it against the correct database and collection.
 //db.sales.drop();
 
 // Insert a few documents into the sales collection.
-db.Words.insertMany([
-  { '_id': 1, 'Word': 'Aardvark', 'definition': 'some animal thing', },
-  { '_id': 2, 'Word': 'Frustrated', 'definition': 'me', },
-  { '_id': 3, 'Word': 'Gullible', 'definition': 'Not an actual word (look it up)', },
-  { '_id': 4, 'Word': 'Zebra', 'definition': 'striped animal thing', },
+db.words.insertMany([
+  { '_id': 1, 'word': 'Aardvark', 'definition': 'some animal thing', },
+  { '_id': 2, 'word': 'Frustrated', 'definition': 'me', },
+  { '_id': 3, 'word': 'Gullible', 'definition': 'Not an actual word (look it up)', },
+  { '_id': 4, 'word': 'Zebra', 'definition': 'striped animal thing', },
 ]);
 
 //mongodb+srv://Ghasb001:HACKReactorRPP2209!@cluster0.jkoecfm.mongodb.net/test
