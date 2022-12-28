@@ -4,24 +4,24 @@
 // Use Ctrl+Space inside a snippet or a string literal to trigger completions.
 
 // Select the database to use.
-use('glossary');
+//use('Glossary');
 
 // The drop() command destroys all data from a collection.
 // Make sure you run it against the correct database and collection.
 //db.sales.drop();
 
 // Insert a few documents into the sales collection.
-db.words.insertMany([
-  { '_id': 1, 'word': 'Aardvark', 'definition': 'some animal thing', },
-  { '_id': 2, 'word': 'Frustrated', 'definition': 'me', },
-  { '_id': 3, 'word': 'Gullible', 'definition': 'Not an actual word (look it up)', },
-  { '_id': 4, 'word': 'Zebra', 'definition': 'striped animal thing', },
-]);
+// db.glossaries.insertMany([
+//   { '_id': 1, 'word': 'Aardvark', 'definition': 'some animal thing', },
+//   { '_id': 2, 'word': 'Frustrated', 'definition': 'me', },
+//   { '_id': 3, 'word': 'Gullible', 'definition': 'Not an actual word (look it up)', },
+//   { '_id': 4, 'word': 'Zebra', 'definition': 'striped animal thing', },
+// ]);
 
-//mongodb+srv://Ghasb001:HACKReactorRPP2209!@cluster0.jkoecfm.mongodb.net/test
+//mongodb+srv://Ghasb001:HACKReactorRPP2209!@cluster0.jkoecfm.mongodb.net/glossary
 
 // Run a find command to view items sold on April 4th, 2014.
-// db.sales.find({ date: { $gte: new Date('2014-04-04'), $lt: new Date('2014-04-05') } });
+db.glossaries.find({});
 
 // // Build an aggregation to view total sales for each product in 2014.
 // const aggregation = [
@@ -33,3 +33,4 @@ db.words.insertMany([
 // // Use toArray() to exhaust the cursor to return the whole result set.
 // // You can use hasNext()/next() to iterate through the cursor page by page.
 // db.sales.aggregate(aggregation);
+//module.exports.data = db.glossaries.find({});

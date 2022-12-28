@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.get('/words', (req, res) => {
   db.retrieve();
-  res.send('ok')
+  res.sendStatus(200)
   res.end();
 })
 

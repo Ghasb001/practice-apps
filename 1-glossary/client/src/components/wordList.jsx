@@ -1,10 +1,16 @@
 import React, { Component} from "react";
 import Word from "./word.jsx";
+const raw = require('./boiler.js');
 
-const WordList = (props) => (
-  <div >
-    <h5> WORDLIST </h5>
+const WordList = function(props) {
+//console.log(props);
+return (
+  <div>
+  {props.list.map(gloss =>
+      <Word word={gloss.word} definition={gloss.definition} key={gloss._id} />
+    ) }
   </div>
 )
+  }
 
 export default WordList;
