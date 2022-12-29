@@ -18,14 +18,16 @@ let glossarySchema = mongoose.Schema({
 
 let Glossary = mongoose.model('Glossary', glossarySchema);
 
-let retrieve = () => {
+let retrieve = (callback) => {
 
   Glossary.find({})
   .then((result => {
-    console.log('RESULT', result)
-    return result;
+    callback(null, result)
   }))
-
+  .catch((err => {
+    console.log(err);
+    callback(err);
+  }))
 }
 
 // 1. Use mongoose to establish a connection to MongoDB

@@ -9,9 +9,15 @@ app.use(express.static('client/dist'));
 app.use(express.json());
 
 app.get('/words', (req, res) => {
-  console.log(db.retrieve());
-  res.sendStatus(200)
-  res.end();
+  db.retrieve((err, result) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      res.data = result;
+      res.send(result).status(200);
+    }
+  })
 })
 
 app.post('/words', (req, res) => {

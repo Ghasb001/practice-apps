@@ -8,20 +8,22 @@ import axios from 'axios';
 
 var App = () => {
 
-  // updateData() {
-  //   axios.get('/repos')
-  //   .then((response) => {
-  //     let newList= [...this.state.repos];
-  //     newList = [... response.data];
-  //     this.setState({repos: newList});
-  //   })
-  // }
+  const findData = () => {
+    axios.get('/words')
+    .then(response => {
+      console.log('RESPONSE:', response);
+      return response;
+    })
+  }
+
+
 
   return(
     <div className="App">
       <h1> Glossary </h1>
+      <h1> FIND: {findData()} </h1>
       <div word="word">
-          <WordList list={raw} />
+          <WordList list={raw}/>
         </div>
     </div>
   );
