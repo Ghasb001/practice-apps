@@ -1,9 +1,7 @@
 import React, { Component} from "react";
 import Word from "./word.jsx";
-const raw = require('./boiler.js');
 
 const WordList = function(props) {
-//console.log(props);
 return (
   <div>
   {props.list.map(gloss =>

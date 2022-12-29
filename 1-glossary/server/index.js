@@ -9,14 +9,13 @@ app.use(express.static('client/dist'));
 app.use(express.json());
 
 app.get('/words', (req, res) => {
-  db.retrieve();
+  console.log(db.retrieve());
   res.sendStatus(200)
   res.end();
 })
 
 app.post('/words', (req, res) => {
-  console.log('here')
-  res.end();
+  res.sendStatus(201);
 })
 
 

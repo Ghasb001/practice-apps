@@ -23,6 +23,7 @@ let retrieve = () => {
   Glossary.find({})
   .then((result => {
     console.log('RESULT', result)
+    return result;
   }))
 
 }
