@@ -29,16 +29,6 @@ var App = () => {
     })
   }
 
-  const deleteData = () => {
-    axios.delete('/words')
-    .then(response => {
-      console.log('RESPONSE:', response.data);
-    })
-    .catch(err => {
-      console.log(err);
-    })
-  }
-
   var func = () => {
     console.log('CLICK')
   }

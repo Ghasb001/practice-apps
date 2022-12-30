@@ -5,10 +5,11 @@ import axios from 'axios';
 
 const Word = (props) => {
 
-  const deleteData = () => {
-    axios.delete('/words')
+  const deleteData = (input) => {
+    console.log(input);
+    axios.delete('/words', {data: input})
     .then(response => {
-      console.log('RESPONSE:', response.data);
+      console.log('Entry Deleted');
     })
     .catch(err => {
       console.log(err);
@@ -19,7 +20,7 @@ const Word = (props) => {
 
   const removeElement = () => {
     setVisible((prev) => !prev);
-    deleteData();
+    deleteData(props);
   };
 
   return (

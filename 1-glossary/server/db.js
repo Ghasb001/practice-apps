@@ -48,11 +48,11 @@ let save = (word, callback) => {
 
 }
 
-let deleter = (word, callback) => {
-
-  Glossary.deleteOne(word)
+let deleter = (req, callback) => {
+  console.log('word', req.body);
+  Glossary.deleteOne(req.body)
     .then((data) => {
-      console.log('Saved successfully')
+
       callback(null, data);
   })
   .catch((err) => {
