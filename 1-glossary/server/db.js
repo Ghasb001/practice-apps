@@ -35,8 +35,10 @@ let retrieve = (callback) => {
 }
 
 let save = (req, callback) => {
+  console.log(req.body);
   Glossary.insertMany(req.body)
     .then((data) => {
+      console.log(data);
       console.log('Saved successfully')
       callback(null, data);
   })
@@ -53,7 +55,7 @@ let deleter = (req, callback) => {
       callback(null, data);
   })
   .catch((err) => {
-    console.log('Cannot save', err);
+    console.log('Cannot delete', err);
     callback(err)
   })
 

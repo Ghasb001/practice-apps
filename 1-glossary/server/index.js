@@ -11,7 +11,6 @@ app.use(express.json());
 app.get('/words', (req, res) => {
   db.retrieve((err, result) => {
     if (err) {
-      console.log(err);
       res.sendStatus(500);
     } else {
       res.data = result;
@@ -23,7 +22,6 @@ app.get('/words', (req, res) => {
 app.post('/words', (req, res) => {
   db.save(req, (err, result) => {
     if (err) {
-      console.log(err);
       res.sendStatus(500);
     } else {
       res.sendStatus(201);
@@ -34,7 +32,6 @@ app.post('/words', (req, res) => {
 app.delete('/words', (req, res) => {
   db.deleter(req, (err, result) => {
     if (err) {
-      console.log(err);
       res.sendStatus(500);
     } else {
       res.sendStatus(200)
