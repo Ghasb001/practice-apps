@@ -1,7 +1,12 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-//const words = require('./glossary.mongodb');
+
+
+// 1. Use mongoose to establish a connection to MongoDB
+// 2. Set up any schema and models needed by the app
+// 3. Export the models
+// 4. Import the models into any modules that need them
 
 mongoose.connect('mongodb+srv://Ghasb001:HACKReactorRPP2209!@cluster0.jkoecfm.mongodb.net/glossary?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => {
@@ -30,8 +35,5 @@ let retrieve = (callback) => {
   }))
 }
 
-// 1. Use mongoose to establish a connection to MongoDB
-// 2. Set up any schema and models needed by the app
-// 3. Export the models
-// 4. Import the models into any modules that need them
+
 module.exports.retrieve = retrieve;
