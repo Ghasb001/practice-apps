@@ -12,7 +12,6 @@ var App = () => {
   const findData = () => {
     axios.get('/words')
     .then(response => {
-      console.log('RESPONSE:', response.data);
       setData(response.data)
     })
     .catch(err => {
@@ -21,7 +20,27 @@ var App = () => {
   }
 
   const addData = () => {
+    axios.post('/words')
+    .then(response => {
+      console.log('RESPONSE:', response.data);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
 
+  const deleteData = () => {
+    axios.delete('/words')
+    .then(response => {
+      console.log('RESPONSE:', response.data);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
+  var func = () => {
+    console.log('CLICK')
   }
 
   // use this for page rendering
@@ -29,14 +48,19 @@ var App = () => {
     findData();
   }, [])
 
+  let onSub = (e) => {
+    e.preventDefault();
+    console.log(e);
+  }
+
   return(
     <div className="App">
       <h1> Glossary </h1>
-      <label> Word: <input type="text" name="name" />
-  </label>
-  <label> Definition: <input type="text" name="definition" />
-  </label>
-  <input type="submit" value="Submit" />
+
+      <button onClick={onSub}>Default</button>;
+
+
+
       <div word="word">
           <WordList list={data}/>
         </div>

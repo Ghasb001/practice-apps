@@ -11,17 +11,20 @@
 //db.sales.drop();
 
 // Insert a few documents into the sales collection.
-// db.glossaries.insertMany([
-//   { '_id': 1, 'word': 'Aardvark', 'definition': 'some animal thing', },
-//   { '_id': 2, 'word': 'Frustrated', 'definition': 'me', },
-//   { '_id': 3, 'word': 'Gullible', 'definition': 'Not an actual word (look it up)', },
-//   { '_id': 4, 'word': 'Zebra', 'definition': 'striped animal thing', },
-// ]);
+db.glossaries.insertMany([
+  { '_id': 1, 'word': 'Aardvark', 'definition': 'some animal thing', },
+  { '_id': 2, 'word': 'Frustrated', 'definition': 'me', },
+  { '_id': 3, 'word': 'Gullible', 'definition': 'Not an actual word (look it up)', },
+  { '_id': 4, 'word': 'Zebra', 'definition': 'striped animal thing', },
+  { '_id': 5, 'word': 'React', 'definition': 'JSX', },
+  { '_id': 6, 'word': 'Hello', 'definition': 'darkness my old friend', },
+  { '_id': 7, 'word': 'Rubber Ducking', 'definition': 'coding insanity', },
+]);
 
 //mongodb+srv://Ghasb001:HACKReactorRPP2209!@cluster0.jkoecfm.mongodb.net/glossary
 
 // Run a find command to view items sold on April 4th, 2014.
-db.glossaries.find({});
+// db.glossaries.find({});
 
 // // Build an aggregation to view total sales for each product in 2014.
 // const aggregation = [

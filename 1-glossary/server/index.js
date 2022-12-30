@@ -21,7 +21,27 @@ app.get('/words', (req, res) => {
 })
 
 app.post('/words', (req, res) => {
-  res.sendStatus(201);
+  db.save(req, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      console.log('SAVE')
+    }
+  })
+  res.end();
+})
+
+app.delete('/words', (req, res) => {
+  db.deleter(req, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      console.log('DELETE')
+    }
+  })
+  res.end();
 })
 
 

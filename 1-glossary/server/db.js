@@ -24,7 +24,6 @@ let glossarySchema = mongoose.Schema({
 let Glossary = mongoose.model('Glossary', glossarySchema);
 
 let retrieve = (callback) => {
-
   Glossary.find({})
   .then((result => {
     callback(null, result)
@@ -35,5 +34,34 @@ let retrieve = (callback) => {
   }))
 }
 
+let save = (word, callback) => {
+
+  Glossary.insertMany(word)
+    .then((data) => {
+      console.log('Saved successfully')
+      callback(null, data);
+  })
+  .catch((err) => {
+    console.log('Cannot save', err);
+    callback(err)
+  })
+
+}
+
+let deleter = (word, callback) => {
+
+  Glossary.deleteOne(word)
+    .then((data) => {
+      console.log('Saved successfully')
+      callback(null, data);
+  })
+  .catch((err) => {
+    console.log('Cannot save', err);
+    callback(err)
+  })
+
+}
 
 module.exports.retrieve = retrieve;
+module.exports.save = save;
+module.exports.deleter = deleter;
