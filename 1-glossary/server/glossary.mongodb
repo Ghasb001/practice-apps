@@ -8,17 +8,17 @@
 
 // The drop() command destroys all data from a collection.
 // Make sure you run it against the correct database and collection.
-//db.sales.drop();
+//db.glossaries.drop();
 
 // Insert a few documents into the sales collection.
 db.glossaries.insertMany([
-  { '_id': 1, 'word': 'Aardvark', 'definition': 'some animal thing', },
-  { '_id': 2, 'word': 'Frustrated', 'definition': 'me', },
-  { '_id': 3, 'word': 'Gullible', 'definition': 'Not an actual word (look it up)', },
-  { '_id': 4, 'word': 'Zebra', 'definition': 'striped animal thing', },
-  { '_id': 5, 'word': 'React', 'definition': 'JSX', },
-  { '_id': 6, 'word': 'Hello', 'definition': 'darkness my old friend', },
-  { '_id': 7, 'word': 'Rubber Ducking', 'definition': 'coding insanity', },
+  { '_id': 1, 'word': 'AARDVARK', 'definition': 'some animal thing', },
+  { '_id': 2, 'word': 'FRUSTRATED', 'definition': 'me', },
+  { '_id': 3, 'word': 'GULLIBLE', 'definition': 'Not an actual word (look it up)', },
+  { '_id': 4, 'word': 'ZEBRA', 'definition': 'striped animal thing', },
+  { '_id': 5, 'word': 'REACT', 'definition': 'JSX', },
+  { '_id': 6, 'word': 'HELLO', 'definition': 'darkness my old friend', },
+  { '_id': 7, 'word': 'RUBBER DUCKING', 'definition': 'coding insanity', },
 ]);
 
 //mongodb+srv://Ghasb001:HACKReactorRPP2209!@cluster0.jkoecfm.mongodb.net/glossary

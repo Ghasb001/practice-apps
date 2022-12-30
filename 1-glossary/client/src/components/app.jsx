@@ -19,36 +19,43 @@ var App = () => {
     })
   }
 
-  const addData = () => {
-    axios.post('/words')
+  const addData = (input) => {
+    console.log('INPUT:', input);
+    axios.post('/words', input)
     .then(response => {
-      console.log('RESPONSE:', response.data);
+      alert('Save Successful');
     })
     .catch(err => {
       console.log(err);
     })
   }
 
-  var func = () => {
-    console.log('CLICK')
-  }
-
   // use this for page rendering
   useEffect(() => {
     findData();
-  }, [])
+  }, [data])
 
   let onSub = (e) => {
     e.preventDefault();
-    console.log(e);
+    let word = e.target[0].value.toUpperCase();
+    let definition = e.target[1].value;
+    addData({word: word, definition: definition});
   }
 
   return(
     <div className="App">
       <h1> Glossary </h1>
 
-      <button onClick={onSub}>Default</button>;
+      <form onSubmit={onSub}>
+  <label>
+    Word:
+    <input type="text" name="name" />
+    Definition:
+    <input type="text" def="def" />
+  </label>
+  <input type="submit" value="Submit" />
 
+</form>
 
 
       <div word="word">

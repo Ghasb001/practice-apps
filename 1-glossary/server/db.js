@@ -34,9 +34,8 @@ let retrieve = (callback) => {
   }))
 }
 
-let save = (word, callback) => {
-
-  Glossary.insertMany(word)
+let save = (req, callback) => {
+  Glossary.insertMany(req.body)
     .then((data) => {
       console.log('Saved successfully')
       callback(null, data);
@@ -49,10 +48,8 @@ let save = (word, callback) => {
 }
 
 let deleter = (req, callback) => {
-  console.log('word', req.body);
   Glossary.deleteOne(req.body)
     .then((data) => {
-
       callback(null, data);
   })
   .catch((err) => {

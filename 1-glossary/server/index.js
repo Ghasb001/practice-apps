@@ -26,10 +26,9 @@ app.post('/words', (req, res) => {
       console.log(err);
       res.sendStatus(500);
     } else {
-      console.log(req)
+      res.sendStatus(201);
     }
   })
-  res.end();
 })
 
 app.delete('/words', (req, res) => {

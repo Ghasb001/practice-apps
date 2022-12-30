@@ -6,10 +6,9 @@ import axios from 'axios';
 const Word = (props) => {
 
   const deleteData = (input) => {
-    console.log(input);
     axios.delete('/words', {data: input})
     .then(response => {
-      console.log('Entry Deleted');
+      alert('Delete Successful');
     })
     .catch(err => {
       console.log(err);
