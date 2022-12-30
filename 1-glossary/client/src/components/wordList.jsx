@@ -5,7 +5,7 @@ const WordList = function(props) {
 return (
   <div>
   {props.list.map(gloss =>
-      <Word word={gloss.word} definition={gloss.definition} key={gloss._id} />
+      <Word word={gloss.word} definition={gloss.definition} key={gloss.word} />
     ) }
   </div>
 )
