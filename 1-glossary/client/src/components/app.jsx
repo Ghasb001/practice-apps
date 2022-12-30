@@ -24,6 +24,7 @@ var App = () => {
 
   }
 
+  // use this for page rendering
   useEffect(() => {
     findData();
   }, [])
@@ -31,6 +32,11 @@ var App = () => {
   return(
     <div className="App">
       <h1> Glossary </h1>
+      <label> Word: <input type="text" name="name" />
+  </label>
+  <label> Definition: <input type="text" name="definition" />
+  </label>
+  <input type="submit" value="Submit" />
       <div word="word">
           <WordList list={data}/>
         </div>
