@@ -1,25 +1,33 @@
 import React, { Component } from "react";
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import F1 from './f1.jsx';
 
 // boolean checks to determine the form number
 var checkoutClick = false;
 var f1Click = false;
 
 var App = () => {
-  const [count, setCount] = useState(null);
+  // const [page, setPage] = useState(null);
 
   var checkSub = (e) => {
     console.log(e);
   }
 
-  let testCheck = () => {
-    let renders = (<div>
-      <h2>F1 true</h2>
-      <button type="F1 Submit" onClick={f1Sub}> Next</button>
-    </div>)
-    setCount(renders);
-  }
+  const [open, setIsOpen] = React.useState(null);
+
+
+let rerender = () => {
+  var page = (<div>
+    <h2>Now?</h2>
+  </div>)
+  setIsOpen(page);
+}
+
+// useEffect(() => (
+//   rerender()
+// ), null)
+
 
 
   // item1 LOGIC item2 ? firstCondition : secondCondition
@@ -28,8 +36,11 @@ var App = () => {
 
     <div>
         <h2>F1 False</h2>
-        <button type="F1 Submit" onClick={testCheck}> Checkout</button>
+        <button type="F1 Submit" onClick={checkSub}> Checkout</button>
       </div>
+
+      <button onClick={rerender}> click me! </button>
+      <h3>{open}</h3>
 
   </div>)
 }
