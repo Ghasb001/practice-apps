@@ -22,10 +22,15 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 /****
  *
  *
+ *
  * Other routes here....
  *
  *
  */
+
+app.get('/', (req, res) => {
+  res.sendStatus(200);
+})
 
 app.listen(process.env.PORT);
 console.log(`Listening at http://localhost:${process.env.PORT}`);
