@@ -28,8 +28,12 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
  *
  */
 
-app.get('/', (req, res) => {
+app.get('/checkout', (req, res) => {
   res.sendStatus(200);
+})
+
+app.post('/checkout', (req, res) => {
+  res.sendStatus(201);
 })
 
 app.listen(process.env.PORT);

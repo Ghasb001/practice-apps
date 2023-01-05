@@ -1,184 +1,176 @@
 import React, { Component } from "react";
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-//import F1 from './f1.jsx';
 
 // boolean checks to determine the form number
 var checkoutClick = false;
-var f1Click = false;
-
 var data = {};
 
 var App = () => {
-  // const [page, setPage] = useState(null);
 
-  var checkSub = (e) => {
-    console.log(e);
+  const styles = {
+    display: 'flex',
+    alignItems: 'left',
+    justifyContent: 'left',
+    height: '100vh',
   }
 
   const [form, setForm] = useState(null);
+  const [inputValue, setInputValue] = useState("");
 
-  //const [visible, setVisible] = useState(true);
-  // const removeElement = () => {
-  //   setVisible((prev) => !prev);
-  //   deleteData(props);
-  // };
+  let F1Render = () => {
+    checkoutClick = true;
+    var F1 = (
+      <form >
+        <div>
+          <label>
+            Name----
+            <input type="text" name="name" onChange={(e) => {
+              console.log(e);
+              e.preventDefault();
+              e.stopPropagation();
+              data.name = e.target.value;
+          }}
+              />
+          </label>
+        </div>
+        <div>
+          <label>
+            Email---
+            <input type="text" email="email" onChange={(e) => {
+              e.preventDefault();
+              data.email = e.target.value}}/>
+          </label>
+        </div>
+        <div>
+          <label>
+            Password
+            <input type="text" password="password" onChange={(e) => {
+              e.preventDefault();
+              data.password = e.target.value}}/>
+          </label>
+        </div>
+        <button onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          F2Render();
+        }}> Next </button>
+      </form>
+    )
+    setForm(F1);
+  }
 
+  let F2Render = () => {
+    var F2 = (
+      <form >
+        <div>
+          <label>
+            Line 1--
+            <input type="text" l1="l1" onChange={(e) => {
 
-let F1Render = () => {
-  var F1 = (
-  <form>
-    <label>
-      Name:
-      <input type="text" name="name" />
-      Email:
-      <input type="text" email="email" />
-      Password:
-      <input type="text" password="password" />
-    </label>
-    <button onClick={(e) => {
-      e.preventDefault();
-      F2Render();
-    }}> Next </button>
+              e.preventDefault();
+              e.stopPropagation();
+              data.L1 = e.target.value;}}/>
+          </label>
+        </div>
+        <div>
+          <label>
+            Line 2--
+            <input type="text" l2="l2" onChange={(e) => {
+              e.preventDefault();
+              data.L2 = e.target.value}}/>
+          </label>
+        </div>
+        <div>
+          <label>
+            City----
+            <input type="text" city="city" onChange={(e) => {
+              e.preventDefault();
+              data.city = e.target.value}}/>
+          </label>
+        </div>
+        <div>
+          <label>
+            State---
+            <input type="text" state="state" onChange={(e) => {
+              e.preventDefault();
+              data.state = e.target.value}}/>
+          </label>
+        </div>
+        <div>
+          <label>
+            Zip Code-
+            <input type="text" zip="zip" onChange={(e) => {
+              e.preventDefault();
+              data.zip = e.target.value}}/>
+          </label>
+        </div>
+        <button onClick={(e) => {
+          e.preventDefault();
+          F3Render();
+        }}> Next </button>
+      </form>
+    )
+    setForm(F2);
+  }
+
+  let F3Render = () => {
+    var F3 = (<form>
+      <div>
+        <label>
+          CC Number--------
+          <input type="text" cc="cc" onChange={(e) => {
+            e.preventDefault();
+            data.ccn = e.target.value}}/>
+        </label>
+      </div>
+      <div>
+        <label>
+          Exp Date---------
+          <input type="text" exp="exp" onChange={(e) => {
+            e.preventDefault();
+            data.expDate = e.target.value}}/>
+        </label>
+      </div>
+      <div>
+        <label>
+          CVV--------------
+          <input type="text" cvv="cvv" onChange={(e) => {
+            e.preventDefault();
+            data.cvv = e.target.value}}/>
+        </label>
+      </div>
+      <div>
+        <label>
+          Billing Zip Code-
+          <input type="text" billzip="billzip" onChange={(e) => {
+            e.preventDefault();
+            data.billZip = e.target.value}}/>
+        </label>
+      </div>
+      <button onClick={(e) => {
+        e.preventDefault();
+        alert('Purchase Complete!')
+        checkoutClick = false;
+        console.log(data);
+        setForm(null);
+      }}> Purchase </button>
     </form>
     )
-  setForm(F1);
-}
+    setForm(F3);
+  }
+  return (<div style={styles}>
 
-let F2Render = () => {
-  var F2 = (
-  <form >
-    <label>
-      Line 1:
-      <input type="text" l1="l1" />
-      Line 2:
-      <input type="text" l2="l2" />
-      City:
-      <input type="text" city="city" />
-      State:
-      <input type="text" state="state" />
-      Zip Code:
-      <input type="text" zip="zip" />
-    </label>
-    <button onClick={(e) => {
-      e.preventDefault();
-      F3Render();
-    }}> Next </button>
-    </form>
-    )
-  setForm(F2);
-}
+    {checkoutClick ?
+      null
+      :
+      <div>
+        <button onClick={F1Render}> Checkout </button>
+      </div>}
 
-let F3Render = () => {
-  var F3 = (<form>
-
-    <label>
-      Credit Card Number:
-      <input type="text" cc="cc" />
-      Exp. Date:
-      <input type="text" exp="exp" />
-      CVV (3 numbers on the back of your card):
-      <input type="text" cvv="cvv" />
-      Billing Zip Code:
-      <input type="text" billzip="billzip" />
-    </label>
-    <button onClick={(e) => {
-      e.preventDefault();
-      //F2Render();
-      alert('Purchase Complete!')
-    }}> Purchase </button>
-    </form>
-    )
-  setForm(F3);
-}
-
-  // item1 LOGIC item2 ? firstCondition : secondCondition
-
-  return (<div>
-
-      <button onClick={F1Render}> Checkout </button>
-      <h3>{form}</h3>
+    <h3>{form}</h3>
 
   </div>)
 }
 
 export default App;
-
-/*
-
-var f2Click = false;
-var f3Click = false;
-
-var f1Info = [];
-var f2Info = [];
-var f3Info = [];
-
-let reset = () => {
-  checkoutClick = false;
-  f1Click = false;
-  f2Click = false;
-  f3Click = false;
-}
-
-
- let f1Sub = (e) => {
-    alert('Clicked');
-    console.log(e);
-  }
-
-  let f2Sub = (e) => {
-    alert('Clicked');
-    console.log(e);
-  }
-
-  let f3Sub = (e) => {
-    alert('Clicked');
-    console.log(e);
-  }
-
-  let orderSubmit = (e) => {
-    alert('Clicked');
-    console.log(e);
-
-
-
-    {checkoutClick ?
-      <div>
-        <h2>F1 true</h2>
-        <button type="F1 Submit" onClick={f1Sub}> Next</button>
-      </div>
-      :
-      <div>
-        <h2>F1 False</h2>
-        <button type="F1 Submit" onClick={setCount}> Checkout</button>
-      </div>}
-
-    {f1Click ?
-      <div>
-        <h2>F1 true</h2>
-        <button type="F1 Submit" onClick={f1Sub}> Next</button>
-      </div>
-      :
-      <div>
-        <h2>F1 False</h2>
-        <button type="F1 Submit" onClick={checkSub}> Next</button>
-      </div>}
-
-
-
-    {f2Click ?
-      <div>
-        <h2>F2 true</h2>
-        <button type="F1 Submit" onClick={f2Sub}> Next</button>
-      </div>
-      : null}
-
-    {f3Click ?
-      <div>
-        <h2>F3 true</h2>
-        <button type="F1 Submit" onClick={f3Sub}> Next</button>
-      </div>
-      : null}
-
-
-*/

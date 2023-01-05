@@ -19,6 +19,11 @@ db.connectAsync()
       "CREATE TABLE IF NOT EXISTS responses (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY)"
     )
   )
+  .then(() =>
+  db.queryAsync(
+    "CREATE TABLE IF NOT EXISTS userData (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY)"
+  )
+  )
   .catch((err) => console.log(err));
 
 
