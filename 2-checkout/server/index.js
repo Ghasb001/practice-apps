@@ -42,21 +42,30 @@ app.get('/checkout', (req, res) => {
 })
 
 app.post('/checkout', (req, res) => {
-  var insertString = 'INSERT INTO userData (cookie, name, email, password, L1, L2, city, state, zip, phone, cc, exp, cvv, billZip)';
-  var valuesString = 'VALUES';
-  console.log('REQ', req.body)
-  var cookie = "'" + req.session_id + "'";
+  var insertString = 'INSERT INTO responses (cookie, name, email, password, L1, L2, city, state, zip, phone, cc, exp, cvv, billZip)';
+  var sentObj = req.body;
+  var holder = {};
+  for (var key in sentObj) {
+    holder[key] = "'" + sentObj[key] + "'";
+  }
+  console.log(holder)
+  var dataArray = Object.values(holder)
 
+ var valueString = 'VALUES (';
+  for (var i = 0; i < dataArray.length - 1; i++) {
+    valueString += dataArray[i] + ', '
+  }
+  valueString += dataArray[dataArray.length - 1] + ')';
+  console.log(valueString);
+  var totalString = insertString + valueString;
 
-    // db.query('PLACEHOLDER', (err, results) => {
-  //   if (err) {
-  //     res.sendStatus(500);
-  //   } else {
-  //     res.sendStatus(201);
-  //   }
-  // })
-  // res.send(req)
-  res.sendStatus(201);
+    db.query(totalString, (err, results) => {
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(201);
+    }
+  })
 })
 
 app.listen(process.env.PORT);

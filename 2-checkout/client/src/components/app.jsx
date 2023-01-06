@@ -150,7 +150,7 @@ var App = () => {
             Phone#--
             <input type="text" zip="zip" onChange={(e) => {
               e.preventDefault();
-              data.zip = e.target.value}}/>
+              data.phone = e.target.value}}/>
           </label>
         </div>
         <button onClick={(e) => {
