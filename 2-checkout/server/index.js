@@ -34,9 +34,8 @@ app.get('/checkout', (req, res) => {
       console.log(err)
       res.sendStatus(404);
     } else {
-      let userData = results[0];
-      console.log('RES', userData);
-      res.send(userData).status(200);
+      console.log('RES', results);
+      res.send(results).status(200);
     }
   })
 

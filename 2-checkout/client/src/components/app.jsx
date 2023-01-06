@@ -5,21 +5,39 @@ import axios from 'axios';
 // boolean checks to determine the form number
 var checkoutClick = false;
 var data = {};
+let purchased = false;
 
 var App = () => {
 
-  /*
+  const [form, setForm] = useState(null);
+  const [visible, setVisible] = useState(true);
+  const removeElement = () => {
+    setVisible((prev) => !prev);
+  };
+
     const findData = () => {
     axios.get('/checkout')
       .then(response => {
-        console.log(response.data);
+        let userData = response.data;
+        let currentCookie = JSON.stringify(document.cookie, undefined, "\t");
+        for (var i = 0; i < userData.length; i++) {
+          if (userData[i].cookie === currentCookie) {
+            checkoutClick = true;
+            purchased = true;
+            removeElement();
+            return;
+          }
+        }
       })
       .catch(err => {
         console.log(err);
       })
   }
 
-*/
+  useEffect(() => {
+    findData();
+  }, [])
+
 
   const addData = () => {
     //let session = findData();
@@ -40,9 +58,6 @@ var App = () => {
     justifyContent: 'left',
     height: '100vh',
   }
-
-  const [form, setForm] = useState(null);
-  const [inputValue, setInputValue] = useState("");
 
   let F1Render = () => {
     checkoutClick = true;
@@ -185,9 +200,10 @@ var App = () => {
       <button onClick={(e) => {
         e.preventDefault();
         alert('Purchase Complete!')
-        checkoutClick = false;
+        //checkoutClick = false;
         console.log(data);
-        setForm(null);
+        var final = (<h4>Your purchase is processing</h4>)
+        setForm(final);
       }}> Purchase </button>
     </form>
     )
@@ -201,6 +217,11 @@ var App = () => {
       <div>
         <button onClick={F1Render}> Checkout </button>
       </div>}
+
+      {visible ?
+      null
+      :
+      <h3>Your purchase is processing</h3>}
 
     <h3>{form}</h3>
 
