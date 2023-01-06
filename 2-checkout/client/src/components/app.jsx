@@ -8,6 +8,32 @@ var data = {};
 
 var App = () => {
 
+  /*
+    const findData = () => {
+    axios.get('/checkout')
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+*/
+
+  const addData = () => {
+    //let session = findData();
+    //console.log(session)
+    axios.post('/checkout', data)
+      .then(response => {
+        alert('Save Successful');
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+
   const styles = {
     display: 'flex',
     alignItems: 'left',
@@ -100,6 +126,14 @@ var App = () => {
         <div>
           <label>
             Zip Code-
+            <input type="text" zip="zip" onChange={(e) => {
+              e.preventDefault();
+              data.zip = e.target.value}}/>
+          </label>
+        </div>
+        <div>
+          <label>
+            Phone#--
             <input type="text" zip="zip" onChange={(e) => {
               e.preventDefault();
               data.zip = e.target.value}}/>
