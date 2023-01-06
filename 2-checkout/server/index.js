@@ -15,6 +15,7 @@ app.use(sessionHandler);
 
 // Logs the time, session_id, method, and url of incoming requests.
 app.use(logger);
+app.use(express.json())
 
 // Serves up all static and generated assets in ../client/dist.
 app.use(express.static(path.join(__dirname, "../client/dist")));
@@ -34,7 +35,6 @@ app.get('/checkout', (req, res) => {
       console.log(err)
       res.sendStatus(404);
     } else {
-      console.log('RES', results);
       res.send(results).status(200);
     }
   })
@@ -42,9 +42,12 @@ app.get('/checkout', (req, res) => {
 })
 
 app.post('/checkout', (req, res) => {
-  var insterString = 'INSERT INTO userData (cookie, name, email, password, L1, L2, city, state, zip, phone, cc, exp, cvv, billZip)';
+  var insertString = 'INSERT INTO userData (cookie, name, email, password, L1, L2, city, state, zip, phone, cc, exp, cvv, billZip)';
   var valuesString = 'VALUES';
-  console.log('REQBODY', req)
+  console.log('REQ', req.body)
+  var cookie = "'" + req.session_id + "'";
+
+
     // db.query('PLACEHOLDER', (err, results) => {
   //   if (err) {
   //     res.sendStatus(500);
@@ -52,6 +55,7 @@ app.post('/checkout', (req, res) => {
   //     res.sendStatus(201);
   //   }
   // })
+  // res.send(req)
   res.sendStatus(201);
 })
 

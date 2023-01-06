@@ -13,13 +13,7 @@ const db = Promise.promisifyAll(connection, { multiArgs: true });
 
 db.connectAsync()
   .then(() => console.log(`Connected to MySQL as id: ${db.threadId}`))
-  // .then (() => )
-  .then(() =>
-    db.queryAsync(
-      'USE checkout'
-    )
-  )
-  // Expand this table definition as needed:
+    // Expand this table definition as needed:
 
   .then(() =>
   db.queryAsync(

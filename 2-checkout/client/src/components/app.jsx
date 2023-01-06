@@ -4,7 +4,7 @@ import axios from 'axios';
 
 // boolean checks to determine the form number
 var checkoutClick = false;
-var data = {};
+var data = {cookie: JSON.stringify(document.cookie, undefined, "\t")};
 let purchased = false;
 
 var App = () => {
@@ -39,15 +39,14 @@ var App = () => {
   }, [])
 
 
-  const addData = () => {
-    //let session = findData();
-    //console.log(session)
-    axios.post('/checkout', data)
+  const addData = (input) => {
+    axios.post('/checkout', input)
       .then(response => {
-        alert('Save Successful');
+        alert('Purchase Successful');
       })
       .catch(err => {
         console.log(err);
+        alert('Uh oh, something\'s not quite right')
       })
   }
 
@@ -199,10 +198,10 @@ var App = () => {
       </div>
       <button onClick={(e) => {
         e.preventDefault();
-        alert('Purchase Complete!')
-        //checkoutClick = false;
         console.log(data);
+        alert('Thank you for your purchase!')
         var final = (<h4>Your purchase is processing</h4>)
+        addData(data);
         setForm(final);
       }}> Purchase </button>
     </form>
@@ -221,7 +220,7 @@ var App = () => {
       {visible ?
       null
       :
-      <h3>Your purchase is processing</h3>}
+      <h5>Your purchase is processing</h5>}
 
     <h3>{form}</h3>
 
