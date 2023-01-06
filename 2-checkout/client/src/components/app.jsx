@@ -66,7 +66,6 @@ var App = () => {
           <label>
             Name----
             <input type="text" name="name" onChange={(e) => {
-              console.log(e);
               e.preventDefault();
               e.stopPropagation();
               data.name = e.target.value;
@@ -94,9 +93,11 @@ var App = () => {
           e.preventDefault();
           e.stopPropagation();
           F2Render();
+          window.removeEventListener('name', onChange(e))
         }}> Next </button>
       </form>
     )
+    //window.removeEventListener()
     setForm(F1);
   }
 

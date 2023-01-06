@@ -16,13 +16,8 @@ db.connectAsync()
     // Expand this table definition as needed:
 
   .then(() =>
-  db.queryAsync(
-    "CREATE TABLE IF NOT EXISTS responses (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, cookie TEXT, name TEXT, email TEXT, password TEXT, L1 TEXT, L2 TEXT, city TEXT, state TEXT, zip TEXT, phone TEXT, cc TEXT, exp TEXT, cvv TEXT, billZip TEXT)"
-  )
-  )
-  .then(() =>
     db.queryAsync(
-      "CREATE TABLE IF NOT EXISTS userData (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, cookie TEXT, name TEXT, email TEXT, password TEXT, L1 TEXT, L2 TEXT, city TEXT, state TEXT, zip TEXT, phone TEXT, cc TEXT, exp TEXT, cvv TEXT, billZip TEXT)"
+      "CREATE TABLE IF NOT EXISTS responses (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, cookie TEXT, name TEXT, email TEXT, password TEXT, L1 TEXT, L2 TEXT, city TEXT, state TEXT, zip TEXT, phone TEXT, cc TEXT, exp TEXT, cvv TEXT, billZip TEXT)"
     )
   )
   .catch((err) => console.log(err));

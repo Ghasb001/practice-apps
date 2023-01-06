@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
  */
 
 app.get('/checkout', (req, res) => {
-  db.query('SELECT * FROM userData', (err, results) => {
+  db.query('SELECT * FROM responses', (err, results) => {
     if (err) {
       console.log(err)
       res.sendStatus(404);
